@@ -9,13 +9,11 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   function handleSubmit(input: AuditInput) {
-    setIsLoading(true);
-    // Audit engine runs client-side for now
-    const result = runAudit(input);
-    console.log("Audit result:", result);
-    // TODO: save to Supabase, get AI summary, redirect to results page
-    setIsLoading(false);
-  }
+  setIsLoading(true);
+  // Save to localStorage (SpendForm already does this)
+  // Redirect to results page
+  window.location.href = "/audit";
+}
 
   return (
     <main className="min-h-screen bg-background">
