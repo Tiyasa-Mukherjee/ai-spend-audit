@@ -33,13 +33,13 @@
 - Installed shadcn/ui with Nova preset and added button, input, label, select, card, badge, progress components
 - Created types/index.ts with all TypeScript interfaces (ToolEntry, AuditInput, AuditResult, etc.)
 - Built lib/auditEngine.ts with hardcoded audit logic for all 8 tools
-- Built components/ToolRow.tsx — single tool input row with tool/plan/spend/seats fields
-- Built components/SpendForm.tsx — full form with localStorage persistence, add/remove tools
+- Built components/ToolRow.tsx - single tool input row with tool/plan/spend/seats fields
+- Built components/SpendForm.tsx - full form with localStorage persistence, add/remove tools
 - Updated app/page.tsx with hero section and form integration
 
 **What I learned:**
-- create-next-app conflicts with existing files — moved them temporarily to resolve
-- Hardcoded audit rules are the right call — AI hallucinating savings numbers would destroy trust
+- create-next-app conflicts with existing files - moved them temporarily to resolve
+- Hardcoded audit rules are the right call - AI hallucinating savings numbers would destroy trust
 - localStorage persistence means users don't lose their form data on refresh
 
 **Blockers / what I'm stuck on:**
@@ -50,3 +50,28 @@
 - Set up Supabase for lead storage
 - Wire up Anthropic API for AI summary
 - Set up shareable URL system
+
+## Day 3 — 2026-05-09
+
+**Hours worked:** 2
+
+**What I did:**
+- Built app/audit/page.tsx - full results page with savings hero, per-tool breakdown, Credex CTA
+- Wired form to redirect to results page on submit
+- Tested audit engine - GitHub Copilot Business 2 seats correctly flags $18/mo overspend
+- Confirmed localStorage persistence working across page reloads
+
+**What I learned:**
+- .tsx is for files with JSX, .ts for pure TypeScript - components are always .tsx
+- Audit logic is working correctly - finance-defensible reasoning showing up in UI
+
+**Blockers / what I'm stuck on:**
+- Results page reads from localStorage - needs real Supabase backend and shareable URLs next
+- No AI summary yet
+- No lead capture yet
+
+**Plan for tomorrow:**
+- Set up Supabase - create leads table, wire up API route
+- Add email capture form on results page
+- Set up Anthropic API for AI summary paragraph
+- Start shareable URL system
