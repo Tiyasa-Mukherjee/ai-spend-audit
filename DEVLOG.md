@@ -23,22 +23,30 @@
 
 ## Day 2 — 2026-05-08
 
-**Hours worked:** 2
+**Hours worked:** 4
 
 **What I did:**
 - Fixed README.md filename (was README.md.txt)
 - Scaffolded Next.js 15 project with TypeScript and Tailwind
 - Wrote proper README.md with Decisions section, setup instructions, and environment variables
 - Locked final tech stack: Next.js + TypeScript + Tailwind + Supabase + Anthropic API + Resend
+- Installed shadcn/ui with Nova preset and added button, input, label, select, card, badge, progress components
+- Created types/index.ts with all TypeScript interfaces (ToolEntry, AuditInput, AuditResult, etc.)
+- Built lib/auditEngine.ts with hardcoded audit logic for all 8 tools
+- Built components/ToolRow.tsx — single tool input row with tool/plan/spend/seats fields
+- Built components/SpendForm.tsx — full form with localStorage persistence, add/remove tools
+- Updated app/page.tsx with hero section and form integration
 
 **What I learned:**
 - create-next-app conflicts with existing files — moved them temporarily to resolve
-- Tech stack decision: hardcoded audit rules are correct, AI only for the summary paragraph
+- Hardcoded audit rules are the right call — AI hallucinating savings numbers would destroy trust
+- localStorage persistence means users don't lose their form data on refresh
 
 **Blockers / what I'm stuck on:**
-- Need to install shadcn/ui and set up project folder structure before building
+- Form is working but audit results are only logged to console — results page not built yet
 
 **Plan for tomorrow:**
-- Install shadcn/ui
-- Build the spend input form (core feature)
-- Set up folder structure: components/, lib/, types/
+- Build audit results page
+- Set up Supabase for lead storage
+- Wire up Anthropic API for AI summary
+- Set up shareable URL system
