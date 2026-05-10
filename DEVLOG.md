@@ -53,25 +53,29 @@
 
 ## Day 3 — 2026-05-09
 
-**Hours worked:** 2
+**Hours worked:** 5
 
 **What I did:**
-- Built app/audit/page.tsx - full results page with savings hero, per-tool breakdown, Credex CTA
-- Wired form to redirect to results page on submit
-- Tested audit engine - GitHub Copilot Business 2 seats correctly flags $18/mo overspend
-- Confirmed localStorage persistence working across page reloads
+- Set up Supabase project with audits, leads, rate_limits tables
+- Built /api/audit route — runs audit engine, saves to Supabase, calls Anthropic API
+- Built /api/leads route — saves email captures
+- Built app/audit/[id]/page.tsx — server component with dynamic routing
+- Built AuditResults component with per-tool breakdown, email capture, share link
+- Fixed params Promise issue in Next.js 16 dynamic routes
+- Fixed SpendForm import path issue
+- Full audit flow working end to end — form → API → Supabase → shareable results page
 
 **What I learned:**
-- .tsx is for files with JSX, .ts for pure TypeScript - components are always .tsx
-- Audit logic is working correctly - finance-defensible reasoning showing up in UI
+- Next.js 16 requires params to be awaited as a Promise in server components
+- Anthropic API needs API key in .env.local — fallback summary works without it
+- The audit was being saved correctly even when the results page was 404ing
 
 **Blockers / what I'm stuck on:**
-- Results page reads from localStorage - needs real Supabase backend and shareable URLs next
-- No AI summary yet
-- No lead capture yet
+- Anthropic API key not set yet — using fallback summary
+- Need to add Anthropic API key to get real AI summaries
 
 **Plan for tomorrow:**
-- Set up Supabase - create leads table, wire up API route
-- Add email capture form on results page
-- Set up Anthropic API for AI summary paragraph
-- Start shareable URL system
+- Get Anthropic API key and add to .env.local
+- Set up GitHub Actions CI/CD
+- Write 5+ tests for audit engine
+- Deploy to Vercel
