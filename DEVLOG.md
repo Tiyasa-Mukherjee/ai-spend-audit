@@ -79,3 +79,30 @@
 - Set up GitHub Actions CI/CD
 - Write 5+ tests for audit engine
 - Deploy to Vercel
+
+## Day 4 — 2026-05-10
+
+**Hours worked:** 2
+
+**What I did:**
+- Installed Jest and ts-jest for testing
+- Written 6 automated tests for the audit engine — all passing
+- Set up GitHub Actions CI pipeline (.github/workflows/ci.yml)
+- Added Supabase secrets to GitHub repository
+- Fixed tsconfig.json to include Jest types
+- Attempted Anthropic API key setup — requires $5 minimum credits, using fallback summary
+
+**What I learned:**
+- Jest needs ts-node for TypeScript config files — switched to jest.config.js instead
+- GitHub Actions secrets keep credentials out of the codebase
+- VS Code TypeScript errors and actual test failures are different things — tests passed despite VS Code showing errors
+
+**Blockers / what I'm stuck on:**
+- Anthropic API key requires paid credits — fallback summary working fine
+- CI build step may fail if env vars not properly set
+
+**Plan for tomorrow:**
+- Deploy to Vercel
+- Update TESTS.md and PROMPTS.md with real content
+- Do user interviews
+- Update README with screenshots
