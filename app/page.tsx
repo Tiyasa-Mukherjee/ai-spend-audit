@@ -2,19 +2,28 @@
 
 import { useState } from "react";
 import { AuditInput } from "@/types";
-import SpendForm from "@/components/ui/SpendForm";
-import { runAudit } from "@/lib/auditEngine";
+import SpendForm from "@/components/SpendForm";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
-  function handleSubmit(input: AuditInput) {
+ async function handleSubmit(input: AuditInput) {
   setIsLoading(true);
-  // Save to localStorage (SpendForm already does this)
-  // Redirect to results page
-  window.location.href = "/audit";
+  try {
+    const response = await fetch("/api/audit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(input),
+    });
+    const data = await response.json();
+    if (data.id) {
+      window.location.href = `/audit/${data.id}`;
+    }
+  } catch (error) {
+    console.error("Audit failed:", error);
+    setIsLoading(false);
+  }
 }
-
   return (
     <main className="min-h-screen bg-background">
       {/* Hero */}
