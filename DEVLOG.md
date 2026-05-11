@@ -106,3 +106,5 @@
 - Update TESTS.md and PROMPTS.md with real content
 - Do user interviews
 - Update README with screenshots
+
+## Day 5 — 2026-05-11
