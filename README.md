@@ -5,7 +5,7 @@ A free web app that helps startup founders and engineering managers instantly au
 Built as a lead-generation asset for [Credex](https://credex.rocks).
 
 ## Live Demo
-_Link will be added after deployment_
+https://ai-spend-audit-tan.vercel.app
 
 ## Screenshots
 _Screenshots will be added as the UI is built_
