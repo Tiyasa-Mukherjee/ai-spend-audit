@@ -1,42 +1,67 @@
 # User Interviews
 
-Three interviews conducted via WhatsApp text on 2026-05-12 with professionals
-who actively use AI tools at work.
+Three interviews conducted via WhatsApp text on 2026-05-12 with enterprise
+technology professionals who actively use AI tools at work.
 
 ---
 
-## Interview 1 — R.M., Senior Technology Consultant, Enterprise client engagements
+## Interview 1 — Raja Mukherjee, Lead Enterprise Solution Architect & GIC CoE Lead - CoPilot, Power Platform & Microsoft 365
 
 **Date:** 2026-05-12
 **Format:** WhatsApp text
 
-**Background:** Uses Microsoft Copilot ecosystem extensively for client work.
+**Background:** Senior architect working on enterprise client engagements.
+Uses Microsoft Copilot ecosystem extensively.
 
 ### Direct Quotes
 
 **On tools used:**
-"I primarily utilize CoPilot for all my client engagements, particularly CoPilot Studio, Microsoft 365 CoPilot, and Azure AI Foundry."
+"I primarily utilize CoPilot for all my engagements, particularly CoPilot
+Studio, Microsoft 365 CoPilot, and Azure AI Foundry."
 
 **On spend:**
-"I typically opt for the CoPilot Studio Message Pack subscription which requires a payment of approximately USD 200, providing me with a capacity of 25,000 messages. Since the capacity of 25,000 messages is quite substantial, I rarely utilize more than half of that amount per month, resulting in my monthly cost being around USD 100."
+"I generally choose the CoPilot Studio Message Pack subscription, which
+necessitates a payment of around USD 200, granting me access to 25,000
+messages. Since I seldom reach more than 2,000 messages per month, my
+actual monthly expenditure works out to no more than USD 20."
+
+**On whether he's on the right plan:**
+"Although there are numerous CoPilot Studio subscription plans available
+(such as Pay as you go / CoPilot Studio Message Pack / Tenant level license
+etc.), I believe that the CoPilot Studio Message Pack subscription is the
+most cost-effective option that I utilize."
 
 **On trusting a free audit tool:**
-"No, I will conduct self-verification independently and possibly utilize other comparable tools (typically Microsoft tools or other reliable paid tools) for cross-verification."
+"No, I will conduct self-verification independently and possibly utilize
+other comparable tools (typically Microsoft tools or other reliable paid
+tools) for cross-verification."
 
 ### Most Surprising Thing
-He already knows he's using only half his message capacity — effectively paying $200 for $100 worth of usage — but doesn't consider this overspending because he values the headroom. This reframes what "overspending" means: it's not just about price per feature, it's about perceived insurance value. A user paying for unused capacity isn't necessarily irrational.
+He pays USD 200 upfront for 25,000 messages but uses fewer than 2,000 per
+month — technically paying for 12x more capacity than he needs. Yet he
+considers this the most cost-effective plan because of how the prepaid
+consumption model works. He's not overspending by his own logic — he's
+buying flexibility and headroom intentionally.
+
+This completely reframes what "overspending" means. The tool assumes unused
+capacity = waste. But for prepaid models, users are buying insurance, not
+just usage. A finance person would call this overspending. An architect
+managing client workloads would call it prudent planning.
 
 ### What It Changed About My Design
-The audit tool should not just flag unused capacity as waste. It should ask "do you need this headroom?" before recommending a downgrade. Added a note in the audit engine reasoning: recommendations must account for intentional over-provisioning, not just usage mismatch.
+The audit tool shouldn't flag prepaid consumption plans the same way it
+flags seat-based overspending. Future versions need to distinguish between
+"paying for unused seats" (clear waste) and "buying message capacity as a
+buffer" (intentional). Added this as a known limitation in ARCHITECTURE.md.
 
 ---
 
-## Interview 2 — S.K., Professional, Mid-size organization
+## Interview 2 — Aritra Ghosh, Architect (CoPilot, Power Platform & Microsoft 365)
 
 **Date:** 2026-05-12
 **Format:** WhatsApp text
 
-**Background:** Uses a combination of ChatGPT and Gemini for work tasks.
+**Background:** Technology architect using multiple AI tools for daily work.
 
 ### Direct Quotes
 
@@ -44,28 +69,41 @@ The audit tool should not just flag unused capacity as waste. It should ask "do 
 "I generally use combination of different AI tools such as ChatGPT, Gemini."
 
 **On spend:**
-"INR 299 monthly."
+"Paid version for Gemini and ChatGPT. INR 299 monthly."
 
-**On whether they're overpaying:**
+**On whether he's overpaying:**
 "I believe I am with the right plan."
 
 **On trusting a free audit tool:**
-"No, I will self verify by myself and maybe through other similar kind of tools to cross verify."
+"No, I will self verify by myself and maybe through other similar kind of
+tools to cross verify."
 
 ### Most Surprising Thing
-INR 299/month for both ChatGPT and Gemini paid versions is surprisingly low — standard paid plans cost significantly more. This suggests they may be on promotional, bundled, or regional pricing that the audit tool doesn't account for. The assumption that "paid = standard international pricing" is wrong for Indian users.
+INR 299/month for both ChatGPT and Gemini paid versions combined is
+significantly lower than standard international pricing — ChatGPT Plus alone
+is $20/month (approximately INR 1,670). This suggests regional pricing,
+promotional plans, or bundled subscriptions that the audit tool doesn't
+account for at all.
+
+The assumption built into the tool — that users pay standard USD pricing —
+is simply wrong for a large portion of Indian users.
 
 ### What It Changed About My Design
-The tool needs to handle regional pricing variations. Indian users may pay significantly different amounts than the USD prices in PRICING_DATA.md. Added a note to ARCHITECTURE.md about this as a known limitation and future improvement.
+The tool needs a "currency / region" field or at minimum a disclaimer that
+pricing comparisons are based on USD rates. Indian users may be on
+significantly different pricing tiers. This is a genuine gap that would
+need to be addressed before launching in the Indian market, which is
+actually a large part of the startup ecosystem Credex might target.
 
 ---
 
-## Interview 3 — A.B., Technology Professional, Enterprise environment
+## Interview 3 — Sourav Paul, Architect (CoPilot, Power Platform)
 
 **Date:** 2026-05-12
 **Format:** WhatsApp text
 
-**Background:** Power user — uses ChatGPT Pro and M365 Copilot with thorough knowledge of pricing.
+**Background:** Senior architect, power user of multiple AI platforms.
+Has independently analyzed pricing models before choosing plans.
 
 ### Direct Quotes
 
@@ -75,14 +113,30 @@ The tool needs to handle regional pricing variations. Indian users may pay signi
 **On spend:**
 "ChatGPT = INR 399/month, M365 Copilot = USD 30/month."
 
-**On whether they're overpaying:**
-"I am not overpaying, as I have analyzed pricing models and capabilities of both the platforms thoroughly."
+**On whether he's overpaying:**
+"I am not overpaying, as I have analyzed pricing models and capabilities
+of both the platforms thoroughly."
 
 **On trusting a free audit tool:**
 "No."
 
 ### Most Surprising Thing
-All three interviewees independently said they would NOT trust a free tool's recommendation and would self-verify. This was consistent across different levels of technical sophistication. The assumption that "showing savings = instant trust" is wrong. Trust is the actual barrier, not awareness of overspending.
+All three interviewees independently said they would not trust a free
+tool's recommendation without verifying it themselves. This wasn't one
+person being cautious — it was a consistent pattern across three different
+professionals at different seniority levels.
+
+The assumption I started with — that showing savings numbers would be
+compelling enough to drive action — is wrong. These users already think
+critically about their tools. A free audit tool needs to earn trust before
+it can drive behavior change, not after.
 
 ### What It Changed About My Design
-The results page needs to show its work — not just "you could save $X" but "here's exactly why, here's the pricing source, here's the date we verified it." Added source citations to each recommendation card and a "How we calculate this" section. The Credex consultation CTA also needs reframing — instead of "book a consultation" it should say "verify these savings with a Credex expert" which matches how these users already think.
+The results page needs to show its work. Not just "you could save $X" but
+"here's the exact pricing page we used, here's the date we verified it,
+here's the reasoning." The Credex CTA also needs reframing — instead of
+"book a consultation" it should say "verify these savings with a Credex
+expert" which matches how these users already think about validation.
+
+This is the most important design change that came out of the interviews.
+Trust is the conversion barrier, not awareness.
