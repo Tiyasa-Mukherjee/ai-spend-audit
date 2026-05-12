@@ -109,4 +109,28 @@
 
 ## Day 5 — 2026-05-11
 
+**Hours worked:** 3
 
+**What I did:**
+- Deployed to Vercel — live at https://ai-spend-audit-tan.vercel.app
+- Added all environment variables to Vercel
+- Confirmed full audit flow works in production
+- Updated README with live deployment URL
+- Completed TESTS.md with all 6 test cases documented
+- Completed PROMPTS.md with full prompt and reasoning
+- Started user interview outreach
+
+**What I learned:**
+- Vercel deployment with Next.js is seamless — Import .env feature saves time
+- Production environment works identically to local
+
+**Blockers / what I'm stuck on:**
+- User interviews not done yet — need 3 real conversations before 13th May
+- REFLECTION.md still needs real answers from the week
+
+**Plan for tomorrow:**
+- Complete all 3 user interviews
+- Write USER_INTERVIEWS.md
+- Write REFLECTION.md
+- Take screenshots for README
+- Final polish and submission prep
