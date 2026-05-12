@@ -8,8 +8,9 @@ Built as a lead-generation asset for [Credex](https://credex.rocks).
 https://ai-spend-audit-tan.vercel.app
 
 ## Screenshots
-_Screenshots will be added as the UI is built_
-
+![Landing Page](screenshots/landing.png)
+![Results - Savings Found](screenshots/results-savings.png)
+![Results - Optimal Spend](screenshots/results-optimal.png)
 ## Quick Start
 
 ```bash
