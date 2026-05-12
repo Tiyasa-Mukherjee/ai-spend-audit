@@ -18,4 +18,4 @@ npm test
 | Claude Max for writing → downgrade to Pro | Use-case aware recommendations |
 | Cursor Pro 1 seat → optimal | No false positives on correct plans |
 | Multiple tools → total savings sum | Aggregate savings calculation accuracy |
-| No negative savings | Edge case — savings floor at zero |
+| No negative savings | Edge case - savings floor at zero |

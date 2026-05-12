@@ -23,7 +23,7 @@ Enterprise credits could be a $10,000+ deal.
 | Paid Twitter ads | ~$150 | $3 CPC, 2% audit→lead conversion |
 
 Organic channels dominate early. The audit tool itself is the
-acquisition mechanism — CAC is near zero when users share their
+acquisition mechanism - CAC is near zero when users share their
 results.
 
 ## Conversion Funnel Math
@@ -53,7 +53,7 @@ Working backwards from the funnel above:
 - Need ~10,500 landing page visitors/month
 - At Hacker News scale (5,000 visits per launch) + organic sharing:
   achievable with 2 viral posts per month
-- The shareable URL feature compounds this — each shared audit
+- The shareable URL feature compounds this - each shared audit
   result brings back 0.3 new visitors on average (conservative)
 - At 480 audits/month completed, viral coefficient of 0.3 means
   144 additional visitors per month from sharing alone

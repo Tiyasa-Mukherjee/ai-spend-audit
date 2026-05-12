@@ -4,7 +4,7 @@
 **Audits completed per week**
 
 Why: This is a lead-gen tool. An audit completed means a user saw real
-value — they inputted their stack and got a result. Everything else
+value - they inputted their stack and got a result. Everything else
 (email captures, consultations booked, credits sold) flows downstream
 from this. DAU is wrong for a tool people use once a quarter. Revenue
 is too lagging. Audits completed is the leading indicator that the
@@ -40,7 +40,7 @@ Simple Posthog or Plausible setup covers all of this in under an hour.
 ## Pivot Trigger
 If after 500 audits completed, email capture rate is below 5% AND
 Credex CTA click rate is below 1%, the audit results are not
-compelling enough — either the savings calculations are too
+compelling enough - either the savings calculations are too
 conservative, the copy on the results page isn't landing, or the
 Credex offer isn't relevant to the users we're attracting.
 

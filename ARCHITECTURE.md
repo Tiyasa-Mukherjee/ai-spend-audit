@@ -26,21 +26,21 @@ graph TD
 ## Data Flow
 1. User enters tools, plans, spend, seats, team size, use case in the form
 2. On submit, form state is POSTed to `/api/audit`
-3. `auditEngine.ts` runs hardcoded rules — no AI involved in the math
+3. `auditEngine.ts` runs hardcoded rules - no AI involved in the math
 4. Anthropic API generates a ~100 word personalized summary paragraph
 5. Audit saved to Supabase with a unique UUID
-6. User redirected to `/audit/[id]` — the shareable results page
+6. User redirected to `/audit/[id]` - the shareable results page
 7. Identifying details stripped from public URL
 8. On email capture, lead saved to Supabase leads table, transactional email sent via Resend
 
 ## Why This Stack
 
-- **Next.js 15** — App Router gives server components for API routes, easy Vercel deployment, good SEO on landing page
-- **TypeScript** — Audit engine has complex logic; types prevent savings calculation bugs
-- **Tailwind + shadcn/ui** — Fast, accessible UI without custom CSS overhead
-- **Supabase** — Postgres gives structured querying for leads; free tier generous; better than Firebase for finance-adjacent data where integrity matters
-- **Anthropic API** — Assignment requirement; claude-haiku-3 keeps cost near zero per audit
-- **Resend** — Simple transactional email, generous free tier, excellent Next.js integration
+- **Next.js 15** - App Router gives server components for API routes, easy Vercel deployment, good SEO on landing page
+- **TypeScript** - Audit engine has complex logic; types prevent savings calculation bugs
+- **Tailwind + shadcn/ui** - Fast, accessible UI without custom CSS overhead
+- **Supabase** - Postgres gives structured querying for leads; free tier generous; better than Firebase for finance-adjacent data where integrity matters
+- **Anthropic API** - Assignment requirement; claude-haiku-3 keeps cost near zero per audit
+- **Resend** - Simple transactional email, generous free tier, excellent Next.js integration
 
 ## Why Hardcoded Rules for Audit Logic
 The audit math must be defensible to a finance person. AI hallucinating savings
@@ -49,8 +49,8 @@ sources are auditable and explainable. AI is used only for the summary paragraph
 where a wrong word doesn't cost the user money.
 
 ## What I'd Change at 10k Audits/Day
-- Move audit engine to an edge function — current server component works but doesn't scale
-- Add Redis caching for pricing data — currently in-memory, fine at low scale
-- Queue Anthropic API calls — rate limits become a problem at volume
-- Add a pricing data refresh job — tool prices change; hardcoded values need weekly verification
-- Separate the lead storage write from the audit response — user shouldn't wait for DB write
+- Move audit engine to an edge function - current server component works but doesn't scale
+- Add Redis caching for pricing data - currently in-memory, fine at low scale
+- Queue Anthropic API calls - rate limits become a problem at volume
+- Add a pricing data refresh job - tool prices change; hardcoded values need weekly verification
+- Separate the lead storage write from the audit response - user shouldn't wait for DB write

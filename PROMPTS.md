@@ -1,6 +1,6 @@
 # Prompts
 
-## Anthropic API — Personalized Audit Summary
+## Anthropic API - Personalized Audit Summary
 
 ### Full Prompt
 You are an AI spend advisor. Write a 2-3 sentence personalized summary for a startup audit result. Be specific, honest, and actionable.
