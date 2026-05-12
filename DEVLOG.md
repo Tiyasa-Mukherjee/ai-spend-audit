@@ -134,3 +134,29 @@
 - Write REFLECTION.md
 - Take screenshots for README
 - Final polish and submission prep
+
+## Day 6 — 2026-05-12
+
+**Hours worked:** 4
+
+**What I did:**
+- Deployed to Vercel successfully — live at https://ai-spend-audit-tan.vercel.app
+- Completed USER_INTERVIEWS.md with 3 real interviews
+- Completed REFLECTION.md with all 5 questions
+- Updated TESTS.md and PROMPTS.md with real content
+- Removed auto-generated AGENTS.md and CLAUDE.md files
+- Confirmed all 12 required markdown files present
+- Confirmed 6 distinct commit days
+- Full audit flow tested on production — working end to end
+
+**What I learned:**
+- All 3 interviewees said they wouldn't trust a free tool without self-verifying — trust is the real barrier, not awareness
+- Regional pricing (INR vs USD) is a gap in the current audit engine
+
+**Blockers / what I'm stuck on:**
+- Resend email not configured — lead capture saves but no confirmation email sent
+- Lighthouse scores not checked yet
+
+**Plan for tomorrow:**
+- Check Lighthouse scores
+- Final submission
