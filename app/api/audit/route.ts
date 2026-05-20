@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { runAudit } from "@/lib/auditEngine";
+import { runAudit, PRICING } from "@/lib/auditEngine";
 import { createServerSupabaseClient } from "@/lib/supabase";
 import { AuditInput } from "@/types";
 
@@ -7,16 +7,14 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const input: AuditInput = body;
+    const userEmail: string | undefined = body.email;
 
-    // Basic honeypot check
     if (body._honey) {
       return NextResponse.json({ error: "Invalid request" }, { status: 400 });
     }
 
-    // Run audit engine
     const auditData = runAudit(input);
 
-    // Generate AI summary (with fallback)
     let aiSummary = generateFallbackSummary(auditData);
     try {
       aiSummary = await generateAISummary(input, auditData);
@@ -24,7 +22,9 @@ export async function POST(request: NextRequest) {
       console.error("Anthropic API failed, using fallback:", err);
     }
 
-    // Save to Supabase
+    // Save pricing snapshot at time of audit
+    const pricingSnapshot = PRICING;
+
     const supabase = createServerSupabaseClient();
     const { data, error } = await supabase
       .from("audits")
@@ -34,6 +34,8 @@ export async function POST(request: NextRequest) {
         total_monthly_savings: auditData.totalMonthlySavings,
         total_annual_savings: auditData.totalAnnualSavings,
         ai_summary: aiSummary,
+        pricing_snapshot: pricingSnapshot,
+        user_email: userEmail || null,
       })
       .select("id")
       .single();
