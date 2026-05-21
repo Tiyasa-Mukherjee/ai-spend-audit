@@ -32,7 +32,7 @@ function defaultTool(): ToolEntry {
 }
 
 interface SpendFormProps {
-  onSubmit: (input: AuditInput) => void;
+  onSubmit: (input: AuditInput & { email?: string }) => void;
   isLoading: boolean;
 }
 
@@ -40,8 +40,8 @@ export default function SpendForm({ onSubmit, isLoading }: SpendFormProps) {
   const [tools, setTools] = useState<ToolEntry[]>([defaultTool()]);
   const [teamSize, setTeamSize] = useState(1);
   const [useCase, setUseCase] = useState<UseCase>("coding");
+  const [email, setEmail] = useState("");
 
-  // Load from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -54,7 +54,6 @@ export default function SpendForm({ onSubmit, isLoading }: SpendFormProps) {
     }
   }, []);
 
-  // Save to localStorage on every change
   useEffect(() => {
     localStorage.setItem(
       STORAGE_KEY,
@@ -75,12 +74,11 @@ export default function SpendForm({ onSubmit, isLoading }: SpendFormProps) {
   }
 
   function handleSubmit() {
-    onSubmit({ tools, teamSize, useCase });
+    onSubmit({ tools, teamSize, useCase, email });
   }
 
   return (
     <div className="space-y-6">
-      {/* Tool rows */}
       <div className="space-y-3">
         {tools.map((entry) => (
           <ToolRow
@@ -93,13 +91,11 @@ export default function SpendForm({ onSubmit, isLoading }: SpendFormProps) {
         ))}
       </div>
 
-      {/* Add tool button */}
       <Button variant="outline" onClick={addTool} className="w-full">
         <Plus className="h-4 w-4 mr-2" />
         Add another tool
       </Button>
 
-      {/* Team info */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border rounded-lg bg-card">
         <div className="space-y-1">
           <Label>Team Size</Label>
@@ -131,7 +127,16 @@ export default function SpendForm({ onSubmit, isLoading }: SpendFormProps) {
         </div>
       </div>
 
-      {/* Submit */}
+      <div className="space-y-1">
+        <Label>Your email (optional - for pricing change alerts)</Label>
+        <Input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@company.com"
+        />
+      </div>
+
       <Button
         onClick={handleSubmit}
         disabled={isLoading}

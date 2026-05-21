@@ -13,7 +13,7 @@ export default function Home() {
     const response = await fetch("/api/audit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(input),
+     body: JSON.stringify({ ...input, email: (input as any).email }),
     });
     const data = await response.json();
     if (data.id) {
