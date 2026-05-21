@@ -66,5 +66,15 @@ Vercel auto-deployed preview branch. Updated RESEND_API_KEY in Vercel
 with real key. Redeployed preview.
 Preview URL: https://ai-spend-audit-git-round-2-reaudit-tiyasa-mukherjees-projects.vercel.app
 
-## 2026-05-21 04:20 - Submitting
+## 2026-05-21 04:20 - Slept
+All features working. Decided to sleep before submitting - assignment
+said don't submit exhausted. Set alarm for afternoon.
+
+## 2026-05-21 13:00 - Final review
+Woke up. Reviewed all files one more time. Checked PR description,
+ROUND2_REFLECTION.md, and ROUND2_DEVLOG.md for completeness.
+Confirmed live preview URL is working.
+Confirmed detect-changes endpoint returns correct response.
+
+## 2026-05-21 14:14 - Submitting
 All deliverables ready. Submitting Round 2 form now.
